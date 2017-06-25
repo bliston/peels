@@ -1,2 +1,2 @@
-# peels
-A JUCE look and feel module
+# Peels
+A front-end library JUCE module
