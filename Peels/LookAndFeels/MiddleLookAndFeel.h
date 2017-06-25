@@ -21,6 +21,7 @@ available: visit www.juce.com for more information.
 #include "../PeelsCommon.h"
 #include "../ColorIds/AppColours.h"
 #include "../BinaryData/BinaryData.h"
+#include "../Icons/Icons.h"
 
 
 namespace LookAndFeelHelpers
@@ -40,7 +41,7 @@ namespace LookAndFeelHelpers
 	}
 }
 namespace Peels
-{
+{ 
 class MiddleLookAndFeel : public LookAndFeel_V3
 {
 public:
@@ -443,10 +444,7 @@ public:
 
 		if (buttonType == DocumentWindow::closeButton)
 		{
-			//shape.addLineSegment(Line<float>(0.0f, 0.0f, 1.0f, 1.0f), 0.1f);
-			//shape.addLineSegment(Line<float>(1.0f, 0.0f, 0.0f, 1.0f), 0.1f);
-
-			Path close(getPathFromChar(0xE14C));
+			Path close(getPathFromChar(Peels::Icons::Material::close));
 			DrawableButton* b = new DrawableButton("maximise", DrawableButton::ImageFitted);
 			DrawablePath dp;
 			dp.setPath(close);
@@ -456,9 +454,7 @@ public:
 		}
 		else if (buttonType == DocumentWindow::minimiseButton)
 		{
-			//shape.addLineSegment(Line<float>(0.0f, 0.5f, 1.0f, 0.5f), 0.1f);
-
-			Path minimize(getPathFromChar(0xE15B));
+			Path minimize(getPathFromChar(Peels::Icons::Material::remove));
 			DrawableButton* b = new DrawableButton("minimise", DrawableButton::ImageFitted);
 			DrawablePath dp;
 			dp.setPath(minimize);
@@ -468,10 +464,7 @@ public:
 		}
 		else if (buttonType == DocumentWindow::maximiseButton)
 		{
-			//shape.addLineSegment(Line<float>(0.5f, 0.0f, 0.5f, 1.0f), 0.1f);
-			//shape.addLineSegment(Line<float>(0.0f, 0.5f, 1.0f, 0.5f), 0.1f);
-
-			Path maximize(getPathFromChar(0xE145));
+			Path maximize(getPathFromChar(Peels::Icons::Material::add));
 			DrawableButton* b = new DrawableButton("maximise", DrawableButton::ImageFitted);
 			DrawablePath dp;
 			dp.setPath(maximize);
@@ -682,7 +675,7 @@ public:
 			g.drawRoundedRectangle(0, buttonArea.getHeight(), buttonArea.getWidth(), 0, 5, 3);
 		}
 
-		const Path p(getPathFromChar(0xE5CF));
+		const Path p(getPathFromChar(Peels::Icons::Material::expand_more));
 		Rectangle<float> iconArea(buttonArea.removeFromRight((buttonArea.getHeight() * 5) / 4).reduced(0).toFloat());
 
 		//g.setColour(box.findColour(ComboBox::arrowColourId).withMultipliedAlpha(box.isEnabled() ? 1.0f : 0.3f));
@@ -764,7 +757,7 @@ public:
 				g.fillRect(r);
 				g.fillRect(iconArea);
 				g.setColour(findColour(mainAccentColourId));
-				const Path tick(getPathFromChar(0xE5CA));
+				const Path tick(getPathFromChar(Peels::Icons::Material::check));
 				g.fillPath(tick, tick.getTransformToScaleToFit(iconArea.reduced(8), true));
 
 				g.setColour(findColour(PopupMenu::highlightedTextColourId));
@@ -996,6 +989,7 @@ public:
 
 	Path getPathFromChar(juce_wchar codePoint) {
 		Path p;
+
 		Typeface *tface = typefaceIcons;
 		Array<int> glyphs;
 		Array<float> offsets;
@@ -1003,9 +997,7 @@ public:
 		tface->getGlyphPositions(s, glyphs, offsets);
 		Path outline;
 		tface->getOutlineForGlyph(glyphs[0], p);
-		//p.addPath(outline, AffineTransform::scale(20));
-		//g.fillPath(p);
-		//p.getTransformToScaleToFit(0, 0, 80, 80, true);
+
 		return p;
 	}
 
@@ -1036,16 +1028,16 @@ public:
 			// it's a ToggleButton
 			if (toggle->getRadioGroupId() > 0)
 			{
-				box = (getPathFromChar(0xE836));
+				box = (getPathFromChar(Peels::Icons::Material::radio_button_unchecked));
 			}
 			else
 			{
-				box = (getPathFromChar(0xE835));
+				box = (getPathFromChar(Peels::Icons::Material::check_box_outline_blank));
 			}
 		}
 		else
 		{
-			box = (getPathFromChar(0xE835));
+			box = (getPathFromChar(Peels::Icons::Material::check_box_outline_blank));
 		}
 
 
@@ -1063,16 +1055,16 @@ public:
 				// it's a ToggleButton
 				if (toggle->getRadioGroupId() > 0)
 				{
-					tick = (getPathFromChar(0xE837));
+					tick = (getPathFromChar(Peels::Icons::Material::radio_button_checked));
 				}
 				else
 				{
-					tick = (getPathFromChar(0xE834));
+					tick = (getPathFromChar(Peels::Icons::Material::check_box));
 				}
 			}
 			else
 			{
-				tick = (getPathFromChar(0xE834));
+				tick = (getPathFromChar(Peels::Icons::Material::check_box));
 			}
 
 			g.setColour(component.findColour(isEnabled ? ToggleButton::tickColourId
@@ -1306,4 +1298,4 @@ private:
 
 };
 }
-#endif   // JUCE_MiddleLookAndFeel_H_INCLUDED
+#endif   // JUCE_MIDDLELOOKANDFEEL_H_INCLUDED

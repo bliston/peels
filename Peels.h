@@ -38,4 +38,5 @@ BEGIN_JUCE_MODULE_DECLARATION
 #include "Peels/BinaryData/BinaryData.h"
 #include "Peels/ColorIds/AppColours.h"
 #include "Peels/Components/SlidingPanelComponent.h"
-#include "Peels/LookAndFeels/MiddleLookAndFeel.h" 
+#include "Peels/LookAndFeels/MiddleLookAndFeel.h"
+#include "Peels/Icons/Icons.h"
